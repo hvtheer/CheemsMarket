@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaction', function (Blueprint $table) {
+        Schema::dropIfExists('tramsactions');
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('orderId');
+            $table->unsignedBigInteger('order_id');
             $table->unsignedInteger('type');
-            $table->text('content');
+            $table->string('content');
+
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaction');
+        Schema::dropIfExists('transactions');
     }
 };
