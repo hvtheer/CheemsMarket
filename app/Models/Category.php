@@ -2,39 +2,38 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
+
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
-    use HasFactory;
-
-    protected $table = 'category';
-
+    protected $table = 'categories';
+    
     protected $fillable = [
-        'category_id',
-        'parent_id',
         'name',
         'content',
+        'parent_id',
     ];
 
-    public static function getAllCategories(){
-        return  Category::orderBy('category_id','DESC')->paginate();
-    }
-
-    public function getNameAttribute()
+    public function parent()
     {
-        return $this->name;
+        return $this->belongsTo(Category::class); 
     }
 
-    // public function temporaries()
-    // {
-    //     return $this->hasMany(TemporaryResidenceAndAbsence::class, 'personId', 'id');
-    // }
+    public function children()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
 
-    // public function receipts()
-    // {
-    //     return $this->hasMany(Receipt::class, 'personId', 'id');
-    // }
+    // Setter 
+    public function setNameAttribute($value)
+    {
+     $this->attributes['name'] = strtolower($value);
+    }
+
+    // Getter
+    public function getNameAttribute($value)
+    {
+        return ucwords($value);
+    }
 }
