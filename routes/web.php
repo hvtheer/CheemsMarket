@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Categories routes
+Route::resource('categories', CategoryController::class);
+Route::delete('categories/{category}/delete', 'App\Http\Controllers\CategoryController@destroy');
+
+// Products routes
+Route::resource('products', ProductController::class);
+Route::delete('products/{product}/delete', 'App\Http\Controllers\ProductController@destroy');
