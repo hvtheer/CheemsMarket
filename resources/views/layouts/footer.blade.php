@@ -2,7 +2,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Cheems Market. All Right Reserved.</span>
+            <span>著作権　&copy; Cheemsマーケット。全著作権所有。</span>
           </div>
         </div>
       </footer>

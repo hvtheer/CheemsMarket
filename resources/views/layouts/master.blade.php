@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include('admin.layouts.head')
+@include('layouts.head')
 
 <body id="page-top">
 
@@ -9,7 +9,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    @include('admin.layouts.sidebar')
+    @include('layouts.sidebar')
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -19,7 +19,7 @@
       <div id="content">
 
         <!-- Topbar -->
-        @include('admin.layouts.header')
+        @include('layouts.header')
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -28,7 +28,7 @@
 
       </div>
       <!-- End of Main Content -->
-      @include('admin.layouts.footer')
+      @include('layouts.footer')
 
 </body>
 

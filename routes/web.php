@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 // Categories routes
 Route::resource('categories', CategoryController::class);
+Route::delete('categories/{category}/delete', 'App\Http\Controllers\CategoryController@destroy');
 
 // Products routes
 Route::resource('products', ProductController::class);
