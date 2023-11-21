@@ -29,12 +29,14 @@ class CategoryController extends Controller
 
         Category::create($request->all());
 
-        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
+        return redirect()->route('categories.index')->with('success', 'カテゴリーが正常に作成されました。');
     }
 
     public function edit(Category $category)
     {
-        $categories = Category::all();
+        $categories = Category::where('id', '!=', $category->id)
+            ->whereNotIn('id', $category->childCategories()->pluck('id'))
+            ->get();
         return view('categories.edit', compact('category', 'categories'));
     }
 
@@ -48,13 +50,13 @@ class CategoryController extends Controller
 
         $category->update($request->all());
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('success', 'カテゴリーが正常に更新されました。');
     }
 
     public function destroy(Category $category)
     {
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', 'カテゴリーが正常に削除されました。');
     }
 }
