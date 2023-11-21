@@ -19,7 +19,7 @@
           <thead>
             <tr>
               <th>ID</th>
-              <th>名前</th>
+              <th>カテゴリー名</th>
               <th>コンテンツ</th>
               <th>親カテゴリー</th>
               <th>アクション</th>

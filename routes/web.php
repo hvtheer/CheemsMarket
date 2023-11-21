@@ -25,3 +25,4 @@ Route::delete('categories/{category}/delete', 'App\Http\Controllers\CategoryCont
 
 // Products routes
 Route::resource('products', ProductController::class);
+Route::delete('products/{product}/delete', 'App\Http\Controllers\ProductController@destroy');
