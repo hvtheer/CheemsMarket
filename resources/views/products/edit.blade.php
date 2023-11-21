@@ -27,7 +27,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label>カテゴリー<span class="text-danger">*</span></label>
                     <select name="category_id" class="form-control">
                         <option value="">なし</option>
@@ -42,7 +42,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label>価格<span class="text-danger">*</span></label>
                     <input type="number" name="price" placeholder="価格" value="{{ old('price', $product->price) }}" class="form-control" required>
                     @error('price')
@@ -53,6 +53,7 @@
                 <div class="form-group col-md-12">
                     <label>製品の写真</label>
                     <input type="file" name="image" class="form-control-file">
+                    <img src="{{ asset($product->image) }}" width="70px" height="70px">
                     @error('image')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror

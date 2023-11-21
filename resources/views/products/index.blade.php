@@ -29,7 +29,7 @@
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->price }}</td>
-                                <td>{{ $product->image }}</td>
+                                <td><img src="{{ asset($product->image) }}" style="width: 40px; height: 40px" alt="Product's image" ></td>
                                 <td>
                                     <a href="{{ url('products/'.$product->id.'/edit') }}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="編集" data-placement="bottom"><i class="fas fa-edit"></i></a>
                                     <form method="POST" action="{{ url('products/'.$product->id.'/delete') }}">

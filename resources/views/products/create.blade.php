@@ -26,7 +26,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label>カテゴリー<span class="text-danger">*</span></label>
                     <select name="category_id" class="form-control">
                         <option value="">なし</option>
@@ -39,7 +39,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label>価格<span class="text-danger">*</span></label>
                     <input type="number" name="price" placeholder="価格" value="{{ old('price') }}" class="form-control" required>
                     @error('price')

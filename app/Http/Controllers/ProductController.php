@@ -27,10 +27,19 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'nullable|url',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        Product::create($request->all());
+        $productData = $request->except('image');
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/products/', $imageName);
+            $productData['image'] = 'uploads/products/' . $imageName;
+        }
+
+        Product::create($productData);
 
         return redirect()->route('products.index')->with('success', '商品が正常に作成されました。');
     }
@@ -48,13 +57,23 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'nullable|url',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        $product->update($request->all());
-
+    
+        $productData = $request->except('image');
+    
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('uploads/products/', $imageName);
+            $productData['image'] = 'uploads/products/' . $imageName;
+        }
+    
+        $product->update($productData);
+    
         return redirect()->route('products.index')->with('success', '商品が正常に更新されました。');
     }
+    
 
     public function destroy(Product $product)
     {
